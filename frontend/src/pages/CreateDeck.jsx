@@ -4,7 +4,7 @@ export default function NewDeck(){
     return(
         <>
         <h4>Create Deck</h4>
-        <Button btnName="+"/>
+        <Button btnName="+" linkRef="/decks/newdeck/newcard"/>
         </>
     )
 }
