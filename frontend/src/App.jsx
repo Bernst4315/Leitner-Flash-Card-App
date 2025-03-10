@@ -1,13 +1,16 @@
 import { useState } from 'react'
 import './App.css'
-import Button from './components/Button'
+
+import { Route, Routes } from "react-router-dom"
+
+import Home from "./pages/Home"
 
 function App() { 
   return (
     <div>
-     <h1>Leitner Flash Card App</h1>
-    <Button btnName={"Decks"} className="frontpage-btn" />
-    <Button btnName={"Study"} className="frontpage-btn"/>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
     </div>
   )
 }
