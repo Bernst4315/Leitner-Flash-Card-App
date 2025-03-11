@@ -1,25 +1,22 @@
 import express from "express"
+import { 
+    getAllFlashcards,
+    getFlashcard,
+    createFlashcard,
+    deleteFlashcard,
+    editFlashcard
+ } from "../controllers/flashcardController.js";
 
 const router = express.Router();
 
-router.get("/", (req,res) => {
-    res.json({mssg: "All flashcards"})
-})
+router.get("/", getAllFlashcards);
 
-router.get("/:id", (req,res) => {
-    res.json({mssg: "a flashcard"})
-})
+router.get("/:id", getFlashcard);
 
-router.post("/", (req,res) => {
-    res.json({mssg: "Made a flashcard"})
-})
+router.post("/", createFlashcard);
 
-router.delete("/:id", (req,res) => {
-    res.json({mssg: "removed a flashcard"})
-})
+router.delete("/:id", deleteFlashcard);
 
-router.patch("/:id", (req,res) => {
-    res.json({mssg: "changed a flashcard"})
-})
+router.patch("/:id", editFlashcard);
 
 export default router
