@@ -1,5 +1,8 @@
 import Button from "../components/Button";
 
+
+//array of decks which is an array of flashcard objs
+
 export default function Decks(){
     return(
      <>
