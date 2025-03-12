@@ -9,19 +9,23 @@ import Decks from './pages/Decks'
 import Study from './pages/Study'
 import CreateDeck from './pages/CreateDeck'
 import CreateCard from './pages/CreateCard'
-import Card from './pages/Card'
+
+//components
+import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 
 function App() { 
   return (
     <div>
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/decks" element={<Decks />} />
         <Route path="/study" element={<Study />} />
         <Route path="/decks/newdeck" element={<CreateDeck />} />
         <Route path="/decks/newdeck/newcard" element={<CreateCard />}/>
-        <Route path="/decks/newdeck/newcard/card" element={<Card />} />
       </Routes>
+      <Footer />
     </div>
   )
 }

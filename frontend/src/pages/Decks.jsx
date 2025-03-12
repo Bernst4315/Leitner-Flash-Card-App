@@ -5,7 +5,6 @@ export default function Decks(){
      <>
         <h1>Your Decks</h1>
         <Button btnName="+" linkRef="/decks/newdeck" />
-        <Button btnName="Home" linkRef="/" />
      </>
         
     )

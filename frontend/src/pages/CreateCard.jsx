@@ -4,7 +4,11 @@ export default function CreateCard(){
     return(
         <>
             <h4>Add Card</h4>
-            <Button btnName="+" linkRef="/decks/newdeck/newcard/card"/>
+            <form action="">
+                <input type="text" placeholder="front of card"/>
+                <input type="text" placeholder="back of card"/>
+                <input type="submit" />
+            </form>
         </>
     )
 }
