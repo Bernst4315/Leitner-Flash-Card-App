@@ -3,7 +3,7 @@ import axios from "axios";
 
 import Button from "./Button";
 
-export default function CreateCard(){
+export default function CreateCard({updateFlashcardList}){
     
     const [flashcardFront, setFlashcardFront] = useState("");
     const [flashcardBack, setFlashcardBack] = useState("");
@@ -11,8 +11,7 @@ export default function CreateCard(){
     async function handleSubmit(e){
         
         e.preventDefault(); 
-        // setFlashcardFront(flashcardFront);
-        // setFlashcardBack(flashcardBack);
+      
         const flashcard = {
             front: flashcardFront,
             back: flashcardBack
@@ -21,8 +20,12 @@ export default function CreateCard(){
         const response = await axios.post("http://localhost:3000/api/flashcards", flashcard)
 
         if(response){
+
+            updateFlashcardList(response.data)
+            
             setFlashcardFront("")
             setFlashcardBack("")
+           
         }
 
         console.log("Submit")

@@ -8,7 +8,7 @@ import Home from "./pages/Home"
 import Decks from './pages/Decks'
 import Study from './pages/Study'
 import CreateDeck from './pages/CreateDeck'
-import CreateCard from './components/CreateCard'
+import CreateCard from './components/CreateFlashcard'
 import AllFlashcards from './pages/AllFlashcards'
 
 //components

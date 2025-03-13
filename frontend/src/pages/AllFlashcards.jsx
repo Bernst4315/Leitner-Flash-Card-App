@@ -2,15 +2,15 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 
 import Flashcard from "../components/Flashcard";
-import CreateCard from "../components/CreateCard";
+import CreateFlashcard from "../components/CreateFlashcard";
 
 export default function AllFlashcards (){
 
-    const [flashcards, setCards] = useState(null)
+    const [flashcards, setFlashcards] = useState(null)
 
     async function getFlashcards(){
         const flashcards = await axios.get("http://localhost:3000/api/flashcards"); 
-        setCards(flashcards.data)
+        setFlashcards(flashcards.data)
     }
     
     useEffect(() => {
@@ -19,11 +19,14 @@ export default function AllFlashcards (){
 
     }, [])
     
+    function updateFlashcardList(newFlashcard){
+            setFlashcards([...flashcards, newFlashcard])
+    }
     
     return(
         <div>
             <h1>All Flashcards</h1>
-            <CreateCard />
+            <CreateFlashcard updateFlashcardList={updateFlashcardList}/>    
             {flashcards && flashcards.map((flashcard) => {
                 return(
                     <Flashcard flashcard={flashcard} key={flashcard._id} />
