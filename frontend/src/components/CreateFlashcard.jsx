@@ -1,8 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
 
-import Button from "./Button";
-
 export default function CreateCard({updateFlashcardList}){
     
     const [flashcardFront, setFlashcardFront] = useState("");

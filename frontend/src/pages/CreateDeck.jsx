@@ -1,10 +1,11 @@
 import Button from "../components/Button";
+import CreateDeck from "../components/CreateDeck";
 
 export default function NewDeck(){
     return(
         <>
-        <h4>Create Deck</h4>
-        <Button btnName="+" linkRef="/decks/newdeck/newcard"/>
+        <CreateDeck />
+        <Button btnName="+Card" linkRef="/decks/newdeck/newcard"/>
         </>
     )
 }
