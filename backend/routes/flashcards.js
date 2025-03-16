@@ -7,16 +7,16 @@ import {
     editFlashcard
  } from "../controllers/flashcardController.js";
 
-const router = express.Router();
+const cardRouter = express.Router();
 
-router.get("/", getAllFlashcards);
+cardRouter.get("/", getAllFlashcards);
 
-router.get("/:id", getFlashcard);
+cardRouter.get("/:id", getFlashcard);
 
-router.post("/", createFlashcard);
+cardRouter.post("/", createFlashcard);
 
-router.delete("/:id", deleteFlashcard);
+cardRouter.delete("/:id", deleteFlashcard);
 
-router.patch("/:id", editFlashcard);
+cardRouter.patch("/:id", editFlashcard);
 
-export default router
+export default cardRouter
