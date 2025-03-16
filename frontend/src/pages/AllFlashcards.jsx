@@ -20,7 +20,7 @@ export default function AllFlashcards (){
     }, [])
     
     function updateFlashcardList(newFlashcard){
-            setFlashcards([...flashcards, newFlashcard])
+            setFlashcards([newFlashcard, ...flashcards])
     }
     
     return(

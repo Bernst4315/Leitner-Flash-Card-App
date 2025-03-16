@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-export default function CreateCard({updateFlashcardList}){
+export default function CreateFlashcard({updateFlashcardList}){
     
     const [flashcardFront, setFlashcardFront] = useState("");
     const [flashcardBack, setFlashcardBack] = useState("");
