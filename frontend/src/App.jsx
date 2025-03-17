@@ -1,14 +1,14 @@
 import { useState } from 'react'
 import './App.css'
 
-import { Route, Routes } from "react-router-dom"
+import { Route, Routes, useParams } from "react-router-dom"
 
 //Pages
 import Home from "./pages/Home"
 import Decks from './pages/Decks'
 import Study from './pages/Study'
 import CreateDeck from './pages/CreateDeck'
-import CreateCard from './components/CreateFlashcard'
+import CreateFlashcard from './components/CreateFlashcard'
 import AllFlashcards from './pages/AllFlashcards'
 
 //components
@@ -25,7 +25,8 @@ function App() {
         <Route path="/study" element={<Study />} />
         <Route path='/allflashcards' element={<AllFlashcards />} />
         <Route path="/decks/newdeck" element={<CreateDeck />} />
-        <Route path="/decks/newdeck/newcard" element={<CreateCard />}/>
+        {/* <Route path="/decks/newdeck/newcard" element={<CreateFlashcard />}/> */}
+        <Route path='/decks/:decktitle' element={<CreateFlashcard />}/>
       </Routes>
       <Footer />
     </div>

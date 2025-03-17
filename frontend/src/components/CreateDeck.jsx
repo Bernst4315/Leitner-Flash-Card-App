@@ -1,11 +1,12 @@
 import axios from "axios";
 import { useState } from "react"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CreateFlashcard from "./CreateFlashcard";
 
 export default function CreateDeck(){
     const [deckTitle, setDeckTitle] = useState("");
-    const [flashCard, setFlashCard] = useState();
+    //const [flashCard, setFlashCard] = useState();
+    const navigate = useNavigate(); 
     
     async function handleSubmit(e){
         e.preventDefault()
@@ -19,6 +20,7 @@ export default function CreateDeck(){
 
         if(response){
             setDeckTitle("")
+            navigate(`/decks/${deckTitle}`)
         }
         
         console.log('deck submit')
@@ -26,10 +28,10 @@ export default function CreateDeck(){
         
     }
 
-    function addToDeck(newFlashcard){
-        console.log(newFlashcard)
-        //setFlashCard([newFlashcard, ...flashCard])
-    }
+    // function addToDeck(newFlashcard){
+    //     console.log(newFlashcard)
+    //     setFlashCard([newFlashcard, ...flashCard])
+    // }
 
     return(
         <div>
@@ -41,9 +43,9 @@ export default function CreateDeck(){
                 placeholder="Deck name..." 
                 onChange={(e) => setDeckTitle(e.target.value)}
                 />
-                {deckTitle && <CreateFlashcard subject={deckTitle} addToDeck={addToDeck}/>}
+                {/*deckTitle && <CreateFlashcard subject={deckTitle} addToDeck={addToDeck}/>*/}
                 {/* <Link to="/decks"> */}
-                    <button type="submit">Add deck</button>
+                    <button >Add deck</button>
                 {/* </Link> */}
             </form>
         </div>
