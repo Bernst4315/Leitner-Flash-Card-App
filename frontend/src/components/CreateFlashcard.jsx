@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-export default function CreateFlashcard({updateFlashcardList}){
+export default function CreateFlashcard({updateFlashcardList, subject, addToDeck}){
     
     const [flashcardFront, setFlashcardFront] = useState("");
     const [flashcardBack, setFlashcardBack] = useState("");
@@ -11,6 +11,7 @@ export default function CreateFlashcard({updateFlashcardList}){
         e.preventDefault(); 
       
         const flashcard = {
+            subject: subject, 
             front: flashcardFront,
             back: flashcardBack
         }
@@ -18,7 +19,8 @@ export default function CreateFlashcard({updateFlashcardList}){
         const response = await axios.post("http://localhost:3000/api/flashcards", flashcard)
 
         if(response){
-
+            console.log(response.data)
+            addToDeck(response.data)
             updateFlashcardList(response.data)
             
             setFlashcardFront("")

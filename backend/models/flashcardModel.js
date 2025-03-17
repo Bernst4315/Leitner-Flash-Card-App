@@ -3,6 +3,11 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const flashcardSchema = new Schema ({
+    subject: {
+        type: String,
+        //required: true
+    },
+    
     front: {
         type: String,
         required: true

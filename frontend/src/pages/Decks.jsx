@@ -21,7 +21,7 @@ export default function Decks(){
      <>
         <h1>Your Decks</h1>
         {decks && decks.map((deck) => {
-            return <button>{deck.title}</button>
+            return <button key={deck._id} >{deck.title}</button>
         })}
         
         <Button btnName="+Deck" linkRef="/decks/newdeck" />

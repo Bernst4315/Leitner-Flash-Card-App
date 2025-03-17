@@ -1,14 +1,18 @@
 import axios from "axios";
 import { useState } from "react"
+import { Link } from "react-router-dom";
+import CreateFlashcard from "./CreateFlashcard";
 
 export default function CreateDeck(){
     const [deckTitle, setDeckTitle] = useState("");
+    const [flashCard, setFlashCard] = useState();
     
     async function handleSubmit(e){
         e.preventDefault()
         
         const deck = {
-            title: deckTitle
+            title: deckTitle,
+            cards: []
         }
 
         const response = await axios.post("http://localhost:3000/api/decks", deck)
@@ -18,7 +22,13 @@ export default function CreateDeck(){
         }
         
         console.log('deck submit')
+        addToDeck();
         
+    }
+
+    function addToDeck(newFlashcard){
+        console.log(newFlashcard)
+        //setFlashCard([newFlashcard, ...flashCard])
     }
 
     return(
@@ -31,7 +41,10 @@ export default function CreateDeck(){
                 placeholder="Deck name..." 
                 onChange={(e) => setDeckTitle(e.target.value)}
                 />
-                <button>Add deck</button>
+                {deckTitle && <CreateFlashcard subject={deckTitle} addToDeck={addToDeck}/>}
+                {/* <Link to="/decks"> */}
+                    <button type="submit">Add deck</button>
+                {/* </Link> */}
             </form>
         </div>
     )
