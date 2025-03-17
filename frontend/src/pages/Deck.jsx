@@ -6,6 +6,9 @@ import axios from "axios";
 import CreateFlashcard from "../components/CreateFlashcard";
 
 export default function Deck (){
+
+    //will need to create a patch request to deck in order to add cards
+
     const [deckTitle, setDeckTitle] = useState(null)
 
     const { id } = useParams(); 
@@ -16,7 +19,12 @@ export default function Deck (){
         setDeckTitle(deck.data.title)
     }
 
-
+    function getFlashcard(newFlashcard){
+        //setFlashcards([newFlashcard, ...flashcards])
+        console.log("from getFlashcard")
+        console.log(newFlashcard)
+        return newFlashcard; 
+}
     useEffect(() => {
 
         getDeckById()
@@ -26,7 +34,7 @@ export default function Deck (){
     return (
         <div>
             {deckTitle && <h3>{deckTitle}</h3>}
-            <CreateFlashcard />
+            <CreateFlashcard getFlashcard={getFlashcard} />
             <Link to="/decks">
                 <button>Decks</button>
             </Link>
