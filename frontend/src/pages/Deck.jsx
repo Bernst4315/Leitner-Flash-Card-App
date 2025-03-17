@@ -19,11 +19,13 @@ export default function Deck (){
         setDeckTitle(deck.data.title)
     }
 
-    function getFlashcard(newFlashcard){
+    async function getFlashcard(newFlashcard){
         //setFlashcards([newFlashcard, ...flashcards])
+        //const flashCard = newFlashcard;
+        const deck = await axios.patch(`http://localhost:3000/api/decks/${id}`, { $push: {cards: newFlashcard}})
         console.log("from getFlashcard")
         console.log(newFlashcard)
-        return newFlashcard; 
+        //return newFlashcard; 
 }
     useEffect(() => {
 
