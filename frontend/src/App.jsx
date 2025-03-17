@@ -27,7 +27,7 @@ function App() {
         <Route path='/allflashcards' element={<AllFlashcards />} />
         <Route path="/decks/newdeck" element={<CreateDeck />} />
         {/* <Route path="/decks/newdeck/newcard" element={<CreateFlashcard />}/> */}
-        <Route path='/decks/:decktitle' element={<Deck />}/>
+        <Route path='/decks/:decktitle/:id' element={<Deck />}/>
       </Routes>
       <Footer />
     </div>
