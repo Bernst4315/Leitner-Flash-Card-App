@@ -1,26 +1,33 @@
 import { useState } from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 export default function CreateFlashcard({updateFlashcardList, subject, addToDeck}){
     
     const [flashcardFront, setFlashcardFront] = useState("");
     const [flashcardBack, setFlashcardBack] = useState("");
+    //const [subject, setSubject] = useState("")
+
+    const { decktitle } = useParams();
+   
 
     async function handleSubmit(e){
         
         e.preventDefault(); 
-      
+    
         const flashcard = {
-            subject: subject, 
+            subject: decktitle, 
             front: flashcardFront,
             back: flashcardBack
         }
+
+        console.log(flashcard + " this is the flash card")
 
         const response = await axios.post("http://localhost:3000/api/flashcards", flashcard)
 
         if(response){
             console.log(response.data)
-            addToDeck(response.data)
+            //addToDeck(response.data)
             updateFlashcardList(response.data)
             
             setFlashcardFront("")
