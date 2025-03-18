@@ -20,6 +20,10 @@
 }
 
 .flashcard{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 5px;
   width: 175px;
+  height: 75px;
 }
