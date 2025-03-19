@@ -12,6 +12,7 @@ import CreateFlashcard from './components/CreateFlashcard'
 import AllFlashcards from './pages/AllFlashcards'
 import Deck from './pages/Deck'
 import EditDeck from './pages/EditDeck'
+import EditCard from './pages/EditCard'
 
 //components
 import Navbar from './components/Navbar'
@@ -29,6 +30,7 @@ function App() {
         <Route path="/decks/newdeck" element={<CreateDeck />} />
         <Route path='/decks/:decktitle/:id' element={<Deck />}/>
         <Route path='/decks/:decktitle/:id/edit' element={<EditDeck />} />
+        <Route path='/decks/:deckid/editcard/:id' element={<EditCard />} />
       </Routes>
       <Footer />
     </div>

@@ -11,8 +11,9 @@ export default function EditDeck (){
     const [deck, setDeck] = useState(null)
     const [flip, setFlip] = useState(false)
 
-    const { decktitle, id } = useParams(); 
-    const navigate = useNavigate();
+    const { decktitle, id } = useParams() 
+    const navigate = useNavigate()
+
 
     useEffect(() => {
 
@@ -28,9 +29,10 @@ export default function EditDeck (){
         setDeck(deck.data.cards)
     }
 
-    function toggle(flashcardID){
-        
-        setFlip((prevFlip) => ({...prevFlip, [flashcardID]: !prevFlip[flashcardID]}))
+    function toggle(flashcardId){
+        console.log('from toggle')
+        console.log(flashcardId)
+        setFlip((prevFlip) => ({...prevFlip, [flashcardId]: !prevFlip[flashcardId]}))
     
     }
 
@@ -55,6 +57,8 @@ export default function EditDeck (){
     async function editFlashcard(e){
         const flashcardId = e.target.id;
         console.log(flashcardId)
+        navigate(`/decks/${id}/editcard/${flashcardId}`)
+
     }
 
     return (
