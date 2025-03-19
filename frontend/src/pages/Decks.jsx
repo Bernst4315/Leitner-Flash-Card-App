@@ -26,7 +26,7 @@ export default function Decks(){
 
         const deck = decks.find((deck) => deck.title === e.target.value && deck._id === e.target.id)
         //console.log(deck)
-        console.log(`this is the deck name: ${deck.title}`)
+       // console.log(`this is the deck name: ${deck.title}`)
         //navigate(deck.title, deck._id)
         navigate(`/decks/${deck.title}/${deck._id}`)
     }
@@ -34,10 +34,17 @@ export default function Decks(){
     return(
      <>
         <h1>Your Decks</h1>
-        {decks && decks.map((deck) => {
-            return <button key={deck._id} onClick={goToDeck} value={deck.title} id={deck._id} >{deck.title}</button>
-        })}
-        
+        <div className="deckList">
+            {decks && decks.map((deck) => {
+                return <button 
+                key={deck._id} 
+                onClick={goToDeck} 
+                value={deck.title} 
+                id={deck._id} 
+                className="deck border"
+                >{deck.title}</button>
+            })}
+        </div>
         <Button btnName="+Deck" linkRef="/decks/newdeck" />
      </>
         

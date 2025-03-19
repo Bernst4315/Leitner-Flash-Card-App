@@ -20,7 +20,7 @@ export default function CreateDeck(){
 
         if(response){
             setDeckTitle("")
-            navigate(`/decks/${deckTitle}`)
+            navigate(`/decks`)
         }
         
         console.log('deck submit')

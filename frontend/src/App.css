@@ -19,6 +19,8 @@
 
 }
 
+/* Flashcards */
+
 .flashcard{
   display: flex;
   justify-content: center;
@@ -26,4 +28,20 @@
   margin: 5px;
   width: 175px;
   height: 75px;
+}
+
+/* Deck */
+
+.deck{
+  width: 100px;
+  height: 100px;
+  margin: 5px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.deckList{
+  display: flex;
+  flex-wrap: wrap;
 }
