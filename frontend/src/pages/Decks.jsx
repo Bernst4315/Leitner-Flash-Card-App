@@ -9,25 +9,20 @@ export default function Decks(){
 
     const [decks, setDecks] = useState(null)
 
+    useEffect(() =>{
+        getDecks();
+
+    })
+
+    //Functions
     async function getDecks(){
         const decks = await axios.get("http://localhost:3000/api/decks"); 
         setDecks(decks.data)
     }
 
-    useEffect(() =>{
-        getDecks();
-
-    }, [])
 
     function goToDeck(e){
-        console.log('click from goToDeck')
-        console.log(decks)
-        console.log(e.target.id);
-
         const deck = decks.find((deck) => deck.title === e.target.value && deck._id === e.target.id)
-        //console.log(deck)
-       // console.log(`this is the deck name: ${deck.title}`)
-        //navigate(deck.title, deck._id)
         navigate(`/decks/${deck.title}/${deck._id}`)
     }
 

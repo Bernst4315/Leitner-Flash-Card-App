@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 
@@ -15,11 +15,20 @@ export default function Deck (){
     const [flip, setFlip] = useState(false)
 
     const { id } = useParams(); 
+    const navigate = useNavigate();
+
+    useEffect(() => {
+
+        getDeckById()
+
+    }, [getFlashcard])
+
+    //Functions
 
     async function getDeckById () {
         const deck = await axios.get(`http://localhost:3000/api/decks/${id}`)
-        console.log("from get deck by id")
-        console.log(deck.data.cards)
+        // console.log("from get deck by id")
+        // console.log(deck.data.cards)
         setDeckTitle(deck.data.title)
         setDeck(deck.data.cards)
     }
@@ -33,11 +42,6 @@ export default function Deck (){
         console.log(newFlashcard)
         //return newFlashcard; 
 }
-    useEffect(() => {
-
-        getDeckById()
-
-    }, [])
 
     function toggle(flashcardID){
         
@@ -45,12 +49,18 @@ export default function Deck (){
     
     }
 
+    function handleDelete(){
+        axios.delete(`http://localhost:3000/api/decks/${id}`)
+        navigate("/decks")
+    }
+
     return (
         <div>
             {deckTitle && <h3>{deckTitle}</h3>}
+            <button onClick={handleDelete}>Delete</button>
             <CreateFlashcard getFlashcard={getFlashcard} />
             {deck && deck.map((flashcard) => (
-                <p key={flashcard._id} className="flashcard border" onClick={() => toggle(flashcard._id)}>{flip[flashcard._id] ? flashcard.front : flashcard.back}</p>
+                <p key={flashcard._id} className="flashcard border" onClick={() => toggle(flashcard._id)}>{flip[flashcard._id] ? flashcard.back : flashcard.front}</p>
             ))}
             <Link to="/decks">
                 <button>Decks</button>
