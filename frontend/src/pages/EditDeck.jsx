@@ -6,7 +6,7 @@ import axios from "axios";
 import CreateFlashcard from "../components/CreateFlashcard";
 import DisplayDeck from "../components/DisplayDeck";
 
-export default function Deck (){
+export default function EditDeck (){
     const [deckTitle, setDeckTitle] = useState(null)
     const [deck, setDeck] = useState(null)
     const [flip, setFlip] = useState(false)
@@ -18,7 +18,7 @@ export default function Deck (){
 
         getDeckById()
 
-    }, [getFlashcard])
+    }, [])
 
     //Functions
 
@@ -28,48 +28,56 @@ export default function Deck (){
         setDeck(deck.data.cards)
     }
 
-    async function getFlashcard(newFlashcard){
-        await axios.patch(`http://localhost:3000/api/decks/${id}`, { $push: {cards: newFlashcard}})
-}
-
     function toggle(flashcardID){
         
         setFlip((prevFlip) => ({...prevFlip, [flashcardID]: !prevFlip[flashcardID]}))
     
     }
 
-    function handleDelete(){
-        axios.delete(`http://localhost:3000/api/decks/${id}`)
-        navigate("/decks")
+    async function handlesubmit(e){
+        e.preventDefault();
+
+        const newTitle = {
+            title: deckTitle
+        }
+
+        await axios.patch(`http://localhost:3000/api/decks/${id}`, newTitle)
     }
 
-    async function handleEdit(){
-        navigate(`/decks/${decktitle}/${id}/edit`)
+    async function deleteFlashcard(e){
+        console.log(e.target.id)
+        const flashcardId = e.target.id;
+        const flashcard = await axios.patch(`http://localhost:3000/api/decks/${id}`, { $pull: {cards: {_id: flashcardId} }})
+        console.log(flashcard)
+
     }
 
-    // async function deleteFlashcard(e){
-    //     console.log(e.target.id)
-    //     const flashcard = await axios.get(`http://localhost:3000/api/flashcards/${e.target.id}`)
-    //     await axios.delete(`http://localhost:3000/api/flashcards/${e.target.id}`, flashcard)
-    // }
+    async function editFlashcard(e){
+        const flashcardId = e.target.id;
+        console.log(flashcardId)
+    }
 
     return (
         <div>
             {deckTitle && <h3>{deckTitle}</h3>}
-            <button onClick={handleDelete}>Delete</button>
-            <button onClick={handleEdit}>Edit</button>
-            <CreateFlashcard getFlashcard={getFlashcard} />
+            <form onSubmit={(e) => handlesubmit(e)}>
+                <label>Change title</label>
+                <input type="text" onChange={(e) => (setDeckTitle(e.target.value))} />
+                <button>edit</button>
+
+            </form>
+            {/* <CreateFlashcard getFlashcard={getFlashcard} /> */}
             {deck && deck.map((flashcard) => (
                 <div key={flashcard._id} className="flashcard border" onClick={() => toggle(flashcard._id)}>
                     <p>{flip[flashcard._id] ? flashcard.back : flashcard.front}</p>
-                    {/* <div className="flashcard-btn">
+                    {<div className="flashcard-btn">
                         <p className="border btn" onClick={(e) => deleteFlashcard(e)} id={flashcard._id}>Delete</p>
-                        <p className="border btn">Edit</p>
-                    </div> */}
+                        <p className="border btn" onClick={(e) => editFlashcard(e)} id={flashcard._id}>Edit</p>
+                    </div>}
                 </div>
             ))}
-            <Link to="/decks">
-                <button>Decks</button>
+            <Link to={`/decks/${decktitle}/${id}`}>
+                <button>Cancel</button>
             </Link>
         </div>
     )

@@ -11,6 +11,7 @@ import CreateDeck from './pages/CreateDeck'
 import CreateFlashcard from './components/CreateFlashcard'
 import AllFlashcards from './pages/AllFlashcards'
 import Deck from './pages/Deck'
+import EditDeck from './pages/EditDeck'
 
 //components
 import Navbar from './components/Navbar'
@@ -26,8 +27,8 @@ function App() {
         <Route path="/study" element={<Study />} />
         <Route path='/allflashcards' element={<AllFlashcards />} />
         <Route path="/decks/newdeck" element={<CreateDeck />} />
-        {/* <Route path="/decks/newdeck/newcard" element={<CreateFlashcard />}/> */}
         <Route path='/decks/:decktitle/:id' element={<Deck />}/>
+        <Route path='/decks/:decktitle/:id/edit' element={<EditDeck />} />
       </Routes>
       <Footer />
     </div>

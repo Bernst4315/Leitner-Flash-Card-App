@@ -6,8 +6,6 @@ export default function CreateFlashcard({updateFlashcardList, subject, addToDeck
     
     const [flashcardFront, setFlashcardFront] = useState("");
     const [flashcardBack, setFlashcardBack] = useState("");
-    const [flashcard, setFlashCard] = useState(null)
-    //const [subject, setSubject] = useState("")
 
     const { decktitle } = useParams();
    
@@ -28,21 +26,7 @@ export default function CreateFlashcard({updateFlashcardList, subject, addToDeck
 
         if(response){
             const data = response.data
-            // console.log("what's in data?")
-            // console.log({data})
-            //setFlashCard(response.data)
-            getFlashcard(response.data)
-            // console.log(`from var flashcard ${flashcard.subject}`)
-            // console.log(`from ${flashcard.front}`)
-            // console.log(`from ${flashcard.back}`)
-            // console.log({flashcard})
-            //addToDeck(response.data)
-            //updateFlashcardList(response.data)
-            
-            // setFlashcardFront("")
-            // setFlashcardBack("")
-            // setFlashCard(null)
-           
+            getFlashcard(data)    
         }
 
         console.log("Submit")
