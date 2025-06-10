@@ -1,8 +1,5 @@
-# Leitner-Flash-Card-App
+# Leitner-FlashCard-App
 
-This application is a study tool usefull for a student in high school or university, or for the autodidact learning a new topic.
-It uses the Leitner System where flash cards that are easy are studied less often, but harder ones are studied more frequenstly,
-which enables the learner to focus on harder principles and vocabulary.   
+This is a flashcard application made using React, Javascript, Node.js, MongoDB, Mongoose, and Express. It is a study tool useful for a student in high school or university, or for the autodidact learning a new topic. It enables users to create multiple decks of personalized flashcards so that topics can be easily organized.
 
-Enables user to create decks of flash cards. Ones that are correct are moved into a deck that will be studies less often, while the cards
-that are answered incorrectly are reset to the daily study deck. There is an option for the user to review any flash card at any time. 
+In the future, it will incorporate the Leitner system, which is a system of spaced repetition. If flashcards are easy, they will come up less often; however, the more difficult ones will appear more frequently. This will allow users to focus on more difficult concepts and streamline the process to comprehension and mastery.  
