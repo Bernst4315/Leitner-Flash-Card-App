@@ -4,7 +4,7 @@ export default function Navbar(){
     return(
         <div>
             <Link to="/">
-                <h1>Leitner Flash Card App</h1>
+                <h1>Flashcard App</h1>
             </Link>
         </div>
     )
